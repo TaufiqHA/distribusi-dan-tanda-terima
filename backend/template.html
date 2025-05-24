@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanda Terima Dokumen</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#8E6FF7", secondary: "" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9fafb;
+      }
+      .document-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        background-color: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        padding: 3rem;
+      }
+      .document-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .document-info {
+        margin-bottom: 1.5rem;
+      }
+      .document-info-row {
+        display: flex;
+        margin-bottom: 0.5rem;
+      }
+      .document-info-label {
+        width: 150px;
+      }
+      .document-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+      }
+      .document-table th,
+      .document-table td {
+        border: 1px solid #e5e7eb;
+        padding: 0.75rem;
+      }
+      .document-table th {
+        background-color: #f9fafb;
+        text-align: center;
+      }
+      .document-footer {
+        margin-top: 2rem;
+      }
+      .signature-area {
+        margin-top: 3rem;
+      }
+      .signature-label {
+        margin-bottom: 2rem;
+      }
+      .signature-image {
+        width: 100px;
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="document-container">
+      <div class="document-title">TANDA TERIMA DOKUMEN</div>
+      <div class="document-info">
+        <div class="document-info-row">
+          <div class="document-info-label">Kode Distribusi</div>
+          <div>: <%= kode %></div>
+        </div>
+        <div class="document-info-row">
+          <div class="document-info-label">Penerima</div>
+          <div>: <%= penerima %></div>
+        </div>
+        <div class="document-info-row">
+          <div class="document-info-label">Tipe Pengiriman</div>
+          <div>: <%= tipe %></div>
+        </div>
+      </div>
+      <table class="document-table">
+        <thead>
+          <tr>
+            <th width="4%">No</th>
+            <th width="76%">Informasi</th>
+            <th width="20%">Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">1</td>
+            <td>
+              <div class="mb-2">
+                Download Dokumennya di Folder Sharing QA di link ini :
+              </div>
+              <div class="mb-2"><%= link %></div>
+              <div class="mb-1"><%= isi %></div>
+            </td>
+            <td class="text-center align-top">
+              <div>Diterima Tgl</div>
+              <div><%= tanggalDiterima %></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="document-footer">
+        <div>
+          Catatan : Tanda Tangan Ini dibuat otomatis oleh sistem ketika Penerima
+          Informasi telah mengkonfirmasi pengumuman.
+        </div>
+        <div class="signature-area">
+          <div class="signature-label">Penerima</div>
+          <div class="signature-image">
+            <svg
+              viewBox="0 0 100 60"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-20 h-16"
+            >
+              <path
+                d="M30,40 Q40,20 45,40 Q50,60 60,40"
+                stroke="#000066"
+                fill="none"
+                stroke-width="2"
+              />
+              <path
+                d="M35,30 Q45,10 50,30"
+                stroke="#000066"
+                fill="none"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <div>(<%= penerima %>)</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

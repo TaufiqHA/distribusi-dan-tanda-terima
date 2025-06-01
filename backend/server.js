@@ -5,6 +5,14 @@ const db = require("./db");
 const ejs = require("ejs");
 const path = require("path");
 const puppeteer = require("puppeteer");
+const cors = require("cors");
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // atau domain spesifik
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.use("/api/distribution", distributionRoutes);
 
